@@ -27,3 +27,21 @@ def createNW(coordinates):
 	return (north, letterNS, west, letterEW)
 
 
+def createDecimal(coordinates):
+
+	northHours = coordinates[0] // 100
+	northMinutes = coordinates[0] % 100
+	if coordinates[1] == 'S':
+		north = -(northHours + northMinutes / 60)
+	else:
+		north = northHours + northMinutes / 60
+	
+	southHours = coordinates[2] // 100
+	southMinutes = coordinates[2] % 100
+	if coordinates[3] == 'W':
+		south = -(southHours + southMinutes / 60)
+	else:
+		south = southHours + southMinutes / 60
+
+	return (round(north, 2), round(south, 2))
+
